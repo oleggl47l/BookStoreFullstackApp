@@ -1,0 +1,15 @@
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\bin\Debug\net8.0\BookStore.Application.deps.json
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\bin\Debug\net8.0\BookStore.Application.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\bin\Debug\net8.0\BookStore.Application.pdb
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\bin\Debug\net8.0\BookStore.DataAccess.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\bin\Debug\net8.0\BookStore.DataAccess.pdb
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.csproj.AssemblyReference.cache
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.AssemblyInfoInputs.cache
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.AssemblyInfo.cs
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.csproj.CoreCompileInputs.cache
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStor.D70AE061.Up2Date
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\refint\BookStore.Application.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.pdb
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\ref\BookStore.Application.dll
