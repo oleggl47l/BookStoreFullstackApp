@@ -12,3 +12,4 @@ D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.DataAccess\obj\Deb
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.DataAccess\obj\Debug\net8.0\BookStore.DataAccess.pdb
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.DataAccess\obj\Debug\net8.0\BookStore.DataAccess.genruntimeconfig.cache
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.DataAccess\obj\Debug\net8.0\ref\BookStore.DataAccess.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.DataAccess\obj\Debug\net8.0\BookStore.DataAccess.sourcelink.json

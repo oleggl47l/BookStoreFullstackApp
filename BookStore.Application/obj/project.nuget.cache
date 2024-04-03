@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "xbnjCP72rYB6six+B7lYhx6LsfmF5jV3tgRI+KgmhNnG4uBHaKx0GnmMA/K9IHy89wxPH2vor3TaJDb0PDyWhg==",
+  "dgSpecHash": "/77T2LhUiQVMnXew/lDLLycaTdqYecISQhjyZSAW/4sYii244dGQMfvqjOUVcpOJkBLp4C6JSDV47eiwaMHhXQ==",
   "success": true,
   "projectFilePath": "D:\\programming\\BookStoreFullstack\\backend\\Bookstore\\BookStore.Application\\BookStore.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\oleg\\.nuget\\packages\\bcrypt.net\\0.1.0\\bcrypt.net.0.1.0.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.0-preview.2.24128.4\\microsoft.aspnetcore.cryptography.internal.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\9.0.0-preview.2.24128.4\\microsoft.aspnetcore.cryptography.keyderivation.9.0.0-preview.2.24128.4.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.9.0.0-preview.2.24128.4.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.abstractions.9.0.0-preview.2.24128.4.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.analyzers.9.0.0-preview.2.24128.4.nupkg.sha512",
@@ -17,8 +20,24 @@
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.logging.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.extensions.options\\9.0.0-preview.2.24128.5\\microsoft.extensions.options.9.0.0-preview.2.24128.5.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0-preview.2.24128.5\\microsoft.extensions.primitives.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.1.2\\microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.1.2\\microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.identitymodel.logging\\7.1.2\\microsoft.identitymodel.logging.7.1.2.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "C:\\Users\\oleg\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
-    "C:\\Users\\oleg\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.0-preview.2\\npgsql.entityframeworkcore.postgresql.9.0.0-preview.2.nupkg.sha512"
+    "C:\\Users\\oleg\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.0-preview.2\\npgsql.entityframeworkcore.postgresql.9.0.0-preview.2.nupkg.sha512",
+    "C:\\Users\\oleg\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt.Net 0.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt.Net",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

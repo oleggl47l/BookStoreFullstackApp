@@ -2,7 +2,7 @@
 
 namespace BookStore.Application.Interfaces;
 
-public interface IService <TEntity> {
+public interface ICRUDService <TEntity> {
     Task<List<TEntity>> GetAll();
     Task<TEntity?> GetById(Guid id);
     Task<TEntity> Create(TEntity entity);

@@ -13,3 +13,4 @@ D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\De
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\refint\BookStore.Application.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.pdb
 D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\ref\BookStore.Application.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\BookStore.Application\obj\Debug\net8.0\BookStore.Application.sourcelink.json
