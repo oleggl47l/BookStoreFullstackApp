@@ -2,7 +2,7 @@
 
 namespace BookStore.DataAccess.Interfaces;
 
-public interface IBookRepository {
+public interface IRepository {
     Task<List<Book>> GetAllBook();
     Task<Book> GetBookById(Guid id);
     Task<Book> CreateBook(Book book);

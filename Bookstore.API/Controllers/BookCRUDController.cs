@@ -1,5 +1,4 @@
 ﻿using BookStore.Application.Interfaces;
-using BookStore.Application.Services;
 using Bookstore.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,22 +6,22 @@ namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class BookController : ControllerBase {
-    private readonly IBooksService _booksService;
+public class BookCRUDController : ControllerBase {
+    private readonly ICRUDService<Book> _icrudService;
 
-    public BookController(IBooksService booksService) {
-        _booksService = booksService;
+    public BookCRUDController(ICRUDService<Book> icrudService) {
+        _icrudService = icrudService;
     }
 
     [HttpGet]
     public async Task<ActionResult<List<Book>>> GetAllBooks() {
-        var books = await _booksService.GetAllBooks();
+        var books = await _icrudService.GetAll();
         return Ok(books);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<Book>> GetBookById(Guid id) {
-        var book = await _booksService.GetBookById(id);
+        var book = await _icrudService.GetById(id);
         if (book == null) {
             return BadRequest("Wrong ID");
         }
@@ -32,7 +31,7 @@ public class BookController : ControllerBase {
 
     [HttpPost]
     public async Task<ActionResult<Book>> CreateBook([FromBody] Book book) {
-        var createdBook = await _booksService.CreateBook(book);
+        var createdBook = await _icrudService.Create(book);
         return CreatedAtAction(nameof(GetBookById), new { id = createdBook.BookId }, createdBook);
     }
 
@@ -42,12 +41,12 @@ public class BookController : ControllerBase {
             return BadRequest("Wrong ID");
         }
 
-        var updatedBook = await _booksService.UpdateBook(book);
+        var updatedBook = await _icrudService.Update(book);
         return Ok(updatedBook);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteBook(Guid id) {
-        return Ok(await _booksService.DeleteBook(id));
+        return Ok(await _icrudService.Delete(id));
     }
 }

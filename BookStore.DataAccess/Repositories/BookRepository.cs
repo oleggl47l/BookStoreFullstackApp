@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookStore.DataAccess.Repositories;
 
-public class BookRepository : IBookRepository {
+public class Repository : IRepository {
     private readonly BookStoreDbContext _context;
 
-    public BookRepository(BookStoreDbContext context) {
+    public Repository(BookStoreDbContext context) {
         _context = context;
     }
 
