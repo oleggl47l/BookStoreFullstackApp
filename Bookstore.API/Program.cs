@@ -12,7 +12,6 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
@@ -21,24 +20,25 @@ string connection =
     builder.Configuration.GetConnectionString("StoreDbContext") ?? string.Empty;
 builder.Services.AddDbContext<BookStoreDbContext>(options => options.UseNpgsql(connection));
 
-builder.Services.AddScoped<ICRUDService<Book>, BookIcrudService>();
+builder.Services.AddScoped<ICRUDService<Book>, BookCRUDService>();
 builder.Services.AddScoped<IRepository<Book>, BookRepository>();
 
-builder.Services.AddScoped<ICRUDService<OrderItem>, OrderItemIcrudService>();
+builder.Services.AddScoped<ICRUDService<OrderItem>, OrderItemCRUDService>();
 builder.Services.AddScoped<IRepository<OrderItem>, OrderItemRepository>();
 
-builder.Services.AddScoped<ICRUDService<Order>, OrderIcrudService>();
+builder.Services.AddScoped<ICRUDService<Order>, OrderCRUDService>();
 builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
 
-builder.Services.AddScoped<ICRUDService<Role>, RoleIcrudService>();
+builder.Services.AddScoped<ICRUDService<Role>, RoleCRUDService>();
 builder.Services.AddScoped<IRepository<Role>, RoleRepository>();
 
-builder.Services.AddScoped<ICRUDService<User>, UserIcrudService>();
+builder.Services.AddScoped<ICRUDService<User>, UserCRUDService>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 
 builder.Services.AddScoped<RegistrationService>();
 builder.Services.AddScoped<AuthService>();
 
+builder.Services.AddScoped<OrderService>();
 
 builder.Services.AddSwaggerGen(opt => {
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore", Version = "v1" });
@@ -63,6 +63,7 @@ builder.Services.AddSwaggerGen(opt => {
     });
 });
 
+builder.Services.AddAuthorization();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options => {
         options.TokenValidationParameters = new TokenValidationParameters {

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookStore.DataAccess.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    [Migration("20240403223541_Initial")]
+    [Migration("20240404190612_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -70,6 +70,9 @@ namespace BookStore.DataAccess.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("numeric");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
@@ -104,7 +107,7 @@ namespace BookStore.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Bookstore.Models.Role", b =>

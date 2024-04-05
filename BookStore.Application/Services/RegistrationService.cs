@@ -23,7 +23,11 @@ public class RegistrationService {
             LastName = lastName,
             Email = email,
             PasswordHash = PasswordHasher.HashPassword(password),
-            RoleId = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")
+            // RoleId = new Guid("3fa85f64-5717-4562-b3fc-2c963f66afa6")
+            RoleId = await _context.Roles
+                .Where(role => role.Name == "User")
+                .Select(role => role.RoleId)
+                .FirstOrDefaultAsync()
         };
 
         _context.Users.Add(user);

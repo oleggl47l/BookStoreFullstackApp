@@ -67,6 +67,9 @@ namespace BookStore.DataAccess.Migrations
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("numeric");
+
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
 
@@ -101,7 +104,7 @@ namespace BookStore.DataAccess.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("OrderItems");
                 });
 
             modelBuilder.Entity("Bookstore.Models.Role", b =>

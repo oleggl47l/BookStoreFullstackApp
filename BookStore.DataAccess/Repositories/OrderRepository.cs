@@ -25,7 +25,7 @@ public class OrderRepository : IRepository<Order> {
 
         return order;
     }
-    
+
     public async Task<Order> Update(Order order) {
         _context.Set<Order>().Update(order);
         await _context.SaveChangesAsync();
@@ -40,7 +40,7 @@ public class OrderRepository : IRepository<Order> {
 
         _context.Set<Order>().Remove(order);
         await _context.SaveChangesAsync();
-        
+
         return order;
     }
 }

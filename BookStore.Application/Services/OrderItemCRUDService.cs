@@ -4,10 +4,10 @@ using Bookstore.Models;
 
 namespace BookStore.Application.Services;
 
-public class OrderItemIcrudService : ICRUDService<OrderItem> {
+public class OrderItemCRUDService : ICRUDService<OrderItem> {
     private readonly IRepository<OrderItem> _repository;
 
-    public OrderItemIcrudService(IRepository<OrderItem> repository) {
+    public OrderItemCRUDService(IRepository<OrderItem> repository) {
         _repository = repository;
     }
 

@@ -1,4 +1,6 @@
-﻿namespace Bookstore.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace Bookstore.Models;
 
 public class User {
     public Guid UserId { get; set; }
@@ -7,5 +9,6 @@ public class User {
     public string Email { get; set; } = string.Empty;
     public string PasswordHash { get; set; } = string.Empty;
     public Guid RoleId { get; set; }
+    [JsonIgnore]
     public Role Role { get; set; }
 }

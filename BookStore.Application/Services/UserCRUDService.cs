@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace BookStore.Application.Services;
 
-public class UserIcrudService : ICRUDService<User> {
+public class UserCRUDService : ICRUDService<User> {
     private readonly IRepository<User> _repository;
 
-    public UserIcrudService(IRepository<User> repository) {
+    public UserCRUDService(IRepository<User> repository) {
         _repository = repository;
     }
 

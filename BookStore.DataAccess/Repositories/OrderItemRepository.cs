@@ -15,8 +15,8 @@ public class OrderItemRepository : IRepository<OrderItem> {
         return await _context.Set<OrderItem>().ToListAsync();
     }
 
-    public async Task<OrderItem?> GetById(Guid id) {
-        return await _context.Set<OrderItem>().FirstOrDefaultAsync(oi => oi.OrderItemId == id);
+    public async Task<OrderItem> GetById(Guid id) {
+        return (await _context.Set<OrderItem>().FirstOrDefaultAsync(oi => oi.OrderItemId == id))!;
     }
 
     public async Task<OrderItem> Create(OrderItem orderItem) {
@@ -25,7 +25,7 @@ public class OrderItemRepository : IRepository<OrderItem> {
 
         return orderItem;
     }
-    
+
     public async Task<OrderItem> Update(OrderItem orderItem) {
         _context.Set<OrderItem>().Update(orderItem);
         await _context.SaveChangesAsync();
@@ -40,7 +40,7 @@ public class OrderItemRepository : IRepository<OrderItem> {
 
         _context.Set<OrderItem>().Remove(orderItem);
         await _context.SaveChangesAsync();
-        
+
         return orderItem;
     }
 }

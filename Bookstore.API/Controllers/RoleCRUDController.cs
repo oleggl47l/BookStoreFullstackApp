@@ -1,11 +1,13 @@
 ﻿using BookStore.Application.Interfaces;
 using Bookstore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class RoleCRUDController : ControllerBase {
     private readonly ICRUDService<Role> _icrudService;
 
