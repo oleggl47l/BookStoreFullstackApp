@@ -36,7 +36,7 @@ builder.Services.AddScoped<ICRUDService<User>, UserCRUDService>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 
 builder.Services.AddScoped<RegistrationService>();
-builder.Services.AddTransient<AuthService>();
+builder.Services.AddScoped<AuthService>();
 
 builder.Services.AddScoped<OrderService>();
 
@@ -44,12 +44,11 @@ builder.Services.AddSwaggerGen(opt => {
     opt.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore", Version = "v1" });
     opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme {
         In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n " +
-                      "Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\n" +
-                      "Example: \"Bearer 1safsfsdfdfd\"",
+        Description = "Please enter token",
+        Name = "Authorization",
         Type = SecuritySchemeType.Http,
         BearerFormat = "JWT",
-        Scheme = "Bearer"
+        Scheme = "bearer"
     });
     opt.AddSecurityRequirement(new OpenApiSecurityRequirement {
         {
@@ -87,10 +86,10 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
-app.UseAuthentication();
+app.UseHttpsRedirection();
 app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
