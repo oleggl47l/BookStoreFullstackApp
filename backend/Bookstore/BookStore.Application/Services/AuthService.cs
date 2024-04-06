@@ -38,7 +38,7 @@ public class AuthService {
             issuer: AuthConfig.ISSUER,
             audience: AuthConfig.AUDIENCE,
             claims: claims,
-            expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(2)),
+            expires: DateTime.UtcNow.Add(TimeSpan.FromHours(2)),
             signingCredentials: new SigningCredentials(AuthConfig.GetSymmetricSecurityKey(),
                 SecurityAlgorithms.HmacSha256));
 

@@ -1,14 +1,6 @@
-﻿using System.Diagnostics;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using BookStore.Application.Security;
-using BookStore.Application.Services;
+﻿using BookStore.Application.Services;
 using BookStore.Application.Utilities;
-using Bookstore.Configurations;
-using BookStore.DataAccess;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Bookstore.Controllers;
 
