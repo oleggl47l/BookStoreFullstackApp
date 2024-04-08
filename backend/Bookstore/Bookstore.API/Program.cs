@@ -1,3 +1,4 @@
+using System.Text;
 using BookStore.Application.Interfaces;
 using BookStore.Application.Services;
 using Bookstore.Configurations;
@@ -64,18 +65,20 @@ builder.Services.AddSwaggerGen(opt => {
 });
 
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options => {
-        options.TokenValidationParameters = new TokenValidationParameters {
-            ValidateIssuer = true,
-            ValidIssuer = AuthConfig.ISSUER,
-            ValidateAudience = true,
-            ValidAudience = AuthConfig.AUDIENCE,
-            ValidateLifetime = true,
-            IssuerSigningKey = AuthConfig.GetSymmetricSecurityKey(),
-            ValidateIssuerSigningKey = true,
-        };
-    });
+builder.Services.AddAuthentication(options => {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options => {
+    options.TokenValidationParameters = new TokenValidationParameters {
+        ValidateIssuer = true,
+        ValidIssuer = AuthConfig.ISSUER,
+        ValidateAudience = true,
+        ValidAudience = AuthConfig.AUDIENCE,
+        ValidateLifetime = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthConfig.KEY)),
+        ValidateIssuerSigningKey = true,
+    };
+});
 
 
 var app = builder.Build();
@@ -85,7 +88,6 @@ if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 
 app.UseHttpsRedirection();
 app.UseRouting();

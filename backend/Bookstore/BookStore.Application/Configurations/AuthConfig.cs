@@ -8,6 +8,6 @@ public class AuthConfig {
     public const string AUDIENCE = "randomauthclient.com"; 
     public const string KEY = "randomrandomradndomrandomrandom_randomsecret@123123!!!";   
     
-    public static SymmetricSecurityKey GetSymmetricSecurityKey() => 
-        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+    // public static SymmetricSecurityKey GetSymmetricSecurityKey() => 
+    //     new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
 }

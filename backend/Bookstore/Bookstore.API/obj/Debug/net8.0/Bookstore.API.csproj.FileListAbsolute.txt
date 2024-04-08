@@ -120,10 +120,7 @@ D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\obj\Debug\net8
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\BookStore.Application.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\BookStore.Application.pdb
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\obj\Debug\net8.0\Bookstore.API.sourcelink.json
-D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\BCrypt.Net.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll

@@ -8,40 +8,11 @@
     ".NETCoreApp,Version=v8.0": {
       "BookStore.Application/1.0.0": {
         "dependencies": {
-          "BCrypt.Net": "0.1.0",
           "BookStore.DataAccess": "1.0.0",
-          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "9.0.0-preview.2.24128.4",
           "System.IdentityModel.Tokens.Jwt": "7.1.2"
         },
         "runtime": {
           "BookStore.Application.dll": {}
-        }
-      },
-      "BCrypt.Net/0.1.0": {
-        "runtime": {
-          "lib/net35/BCrypt.Net.dll": {
-            "assemblyVersion": "0.1.4141.31969",
-            "fileVersion": "0.1.0.0"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Cryptography.Internal/9.0.0-preview.2.24128.4": {
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.12804"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.0-preview.2.24128.4": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Cryptography.Internal": "9.0.0-preview.2.24128.4"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
-            "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.24.12804"
-          }
         }
       },
       "Microsoft.EntityFrameworkCore/9.0.0-preview.2.24128.4": {
@@ -273,27 +244,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BCrypt.Net/0.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sST2w361Dxt9GGMfpOTiK50wXGV64Ybb1hiX3xjEWnhVYZNF43NuySGwADJa7X1R+bA53NsFR+tuDxcYiJeIOA==",
-      "path": "bcrypt.net/0.1.0",
-      "hashPath": "bcrypt.net.0.1.0.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Cryptography.Internal/9.0.0-preview.2.24128.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-X1ujgg96AbDKvhrjxVOZn1jFtDzbiKpa8TKKi2F9jaPeGVG983YHrtejLc3JJ8uO28kvy21hVEGl8BTBLzeHxw==",
-      "path": "microsoft.aspnetcore.cryptography.internal/9.0.0-preview.2.24128.4",
-      "hashPath": "microsoft.aspnetcore.cryptography.internal.9.0.0-preview.2.24128.4.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.0-preview.2.24128.4": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-O+8mJOuhUIMhwll/EqTs26U2+sed8wrMOfa7UVc3aWJz2fihK8Sas/SKEo6ArTSK2SDg8CbqYdwGBaNk2S4HQg==",
-      "path": "microsoft.aspnetcore.cryptography.keyderivation/9.0.0-preview.2.24128.4",
-      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.9.0.0-preview.2.24128.4.nupkg.sha512"
     },
     "Microsoft.EntityFrameworkCore/9.0.0-preview.2.24128.4": {
       "type": "package",
