@@ -1,27 +1,24 @@
 ﻿using BookStore.Application.Interfaces;
 using Bookstore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class UserCRUDController : ControllerBase {
-    private readonly ICRUDService<User> _icrudService;
+// [Authorize(Policy = "Admin")]
 
-    public UserCRUDController(ICRUDService<User> icrudService) {
-        _icrudService = icrudService;
-    }
-
+public class UserCRUDController(ICRUDService<User> icrudService) : ControllerBase {
     [HttpGet]
     public async Task<ActionResult<List<User>>> GetAllUsers() {
-        var User = await _icrudService.GetAll();
+        var User = await icrudService.GetAll();
         return Ok(User);
     }
 
     [HttpGet("{id}")]
     public async Task<ActionResult<User>> GetUserById(Guid id) {
-        var user = await _icrudService.GetById(id);
+        var user = await icrudService.GetById(id);
         if (user == null) {
             return BadRequest("Wrong ID");
         }
@@ -31,7 +28,7 @@ public class UserCRUDController : ControllerBase {
 
     [HttpPost]
     public async Task<ActionResult<User>> CreateUser([FromBody] User user) {
-        var createdUser = await _icrudService.Create(user);
+        var createdUser = await icrudService.Create(user);
         return CreatedAtAction(nameof(GetUserById), new { id = createdUser.UserId }, createdUser);
     }
 
@@ -41,12 +38,12 @@ public class UserCRUDController : ControllerBase {
             return BadRequest("Wrong ID");
         }
 
-        var updatedUser = await _icrudService.Update(user);
+        var updatedUser = await icrudService.Update(user);
         return Ok(updatedUser);
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteUser(Guid id) {
-        return Ok(await _icrudService.Delete(id));
+        return Ok(await icrudService.Delete(id));
     }
 }

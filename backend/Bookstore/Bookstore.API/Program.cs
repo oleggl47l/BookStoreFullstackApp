@@ -64,7 +64,10 @@ builder.Services.AddSwaggerGen(opt => {
     });
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options => {
+    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+    options.AddPolicy("User", policy => policy.RequireRole("User"));
+});
 builder.Services.AddAuthentication(options => {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -95,5 +98,12 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors(x => {
+    x.WithHeaders().AllowAnyHeader();
+    x.WithOrigins("http://localhost:5173");
+    x.WithMethods().AllowAnyMethod();
+});
+
 
 app.Run();
