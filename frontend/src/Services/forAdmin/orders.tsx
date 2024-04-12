@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface OrderRequest {
     orderDate: Date;
     totalAmount: number;
@@ -5,33 +7,58 @@ export interface OrderRequest {
 }
 
 export const getAllOrders = async () => {
-    const response = await fetch("http://localhost:5282/api/OrderCRUD");
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
 
-    return response.json();
+    try {
+        const response = await axios.get("http://localhost:5282/api/OrderCRUD");
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка получения списка заказов:', error);
+        throw error;
+    }
 };
 
 export const createOrder = async (orderRequest: OrderRequest) => {
-    await fetch("http://localhost:5282/api/OrderCRUD", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(orderRequest),
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.post("http://localhost:5282/api/OrderCRUD", orderRequest);
+    } catch (error) {
+        console.error('Ошибка создания заказа:', error);
+        throw error;
+    }
 };
 
 export const updateOrder = async (id: string, orderRequest: OrderRequest) => {
-    await fetch(`http://localhost:5282/api/OrderCRUD/${id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(orderRequest),
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.put(`http://localhost:5282/api/OrderCRUD/${id}`, orderRequest);
+    } catch (error) {
+        console.error('Ошибка обновления заказа:', error);
+        throw error;
+    }
+};
 
 export const deleteOrder = async (id: string) => {
-    await fetch(`http://localhost:5282/api/OrderCRUD/${id}`, {
-        method: "DELETE",
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.delete(`http://localhost:5282/api/OrderCRUD/${id}`);
+    } catch (error) {
+        console.error('Ошибка удаления заказа:', error);
+        throw error;
+    }
+};

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface UserRequest {
     firstName: string;
     lastName: string;
@@ -6,33 +8,58 @@ export interface UserRequest {
 }
 
 export const getAllUsers = async () => {
-    const response = await fetch("http://localhost:5282/api/UserCRUD");
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
 
-    return response.json();
+    try {
+        const response = await axios.get("http://localhost:5282/api/UserCRUD");
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка получения списка пользователей:', error);
+        throw error;
+    }
 };
 
 export const createUser = async (userRequest: UserRequest) => {
-    await fetch("http://localhost:5282/api/UserCRUD", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(userRequest),
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.post("http://localhost:5282/api/UserCRUD", userRequest);
+    } catch (error) {
+        console.error('Ошибка создания пользователя:', error);
+        throw error;
+    }
 };
 
 export const updateUser = async (id: string, userRequest: UserRequest) => {
-    await fetch(`http://localhost:5282/api/UserCRUD/${id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(userRequest),
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.put(`http://localhost:5282/api/UserCRUD/${id}`, userRequest);
+    } catch (error) {
+        console.error('Ошибка обновления пользователя:', error);
+        throw error;
+    }
+};
 
 export const deleteUser = async (id: string) => {
-    await fetch(`http://localhost:5282/api/UserCRUD/${id}`, {
-        method: "DELETE",
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.delete(`http://localhost:5282/api/UserCRUD/${id}`);
+    } catch (error) {
+        console.error('Ошибка удаления пользователя:', error);
+        throw error;
+    }
+};

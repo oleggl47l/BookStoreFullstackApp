@@ -2,8 +2,16 @@ import {Navbar, Container, Nav, NavDropdown} from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-
 export const NavBar = () => {
+    const isAuthenticated = localStorage.getItem('token') !== null;
+
+    const handleLogout = () => {
+        // Удаление токена из локального хранилища
+        localStorage.removeItem('token');
+        // Перенаправление на страницу входа
+        window.location.href = '/login';
+    };
+
     return (
         <Navbar expand="lg" style={{backgroundColor: '#003049'}} variant="dark">
             <Container fluid>
@@ -23,9 +31,6 @@ export const NavBar = () => {
                             <NavDropdown.Item href="/rolesPage">Roles</NavDropdown.Item>
                             <NavDropdown.Item href="/ordersPage">Orders</NavDropdown.Item>
                             <NavDropdown.Item href="/orderItemsPage">OrderItems</NavDropdown.Item>
-                            <NavDropdown.Item href="#action4">
-                                Another action
-                            </NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action5">
                                 Something else here
@@ -35,7 +40,7 @@ export const NavBar = () => {
                             Link
                         </Nav.Link>
                     </Nav>
-                    <Form className="d-flex">
+                    <Form className="d-flex m-md-auto">
                         <Form.Control
                             type="search"
                             placeholder="Search"
@@ -44,6 +49,20 @@ export const NavBar = () => {
                         />
                         <Button variant="outline-success">Search</Button>
                     </Form>
+                    <Nav
+                        className="me-xxl-1 my-2 my-lg-0"
+                        style={{ maxHeight: '100px' }}
+                        navbarScroll
+                    >
+                        {isAuthenticated ? (
+                            <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                        ) : (
+                            <>
+                                <Nav.Link href="/registration">Registration</Nav.Link>
+                                <Nav.Link href="/login">Login</Nav.Link>
+                            </>
+                        )}
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

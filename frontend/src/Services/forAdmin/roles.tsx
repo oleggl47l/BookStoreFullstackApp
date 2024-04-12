@@ -1,35 +1,62 @@
+import axios from 'axios';
+
 export interface RoleRequest {
     name: string;
 }
 
 export const getAllRoles = async () => {
-    const response = await fetch("http://localhost:5282/api/RoleCRUD");
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
 
-    return response.json();
+    try {
+        const response = await axios.get("http://localhost:5282/api/RoleCRUD");
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка получения списка ролей:', error);
+        throw error;
+    }
 };
 
 export const createRole = async (roleRequest: RoleRequest) => {
-    await fetch("http://localhost:5282/api/RoleCRUD", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(roleRequest),
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.post("http://localhost:5282/api/RoleCRUD", roleRequest);
+    } catch (error) {
+        console.error('Ошибка создания роли:', error);
+        throw error;
+    }
 };
 
 export const updateRole = async (id: string, roleRequest: RoleRequest) => {
-    await fetch(`http://localhost:5282/api/RoleCRUD/${id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(roleRequest),
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.put(`http://localhost:5282/api/RoleCRUD/${id}`, roleRequest);
+    } catch (error) {
+        console.error('Ошибка обновления роли:', error);
+        throw error;
+    }
+};
 
 export const deleteRole = async (id: string) => {
-    await fetch(`http://localhost:5282/api/RoleCRUD/${id}`, {
-        method: "DELETE",
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.delete(`http://localhost:5282/api/RoleCRUD/${id}`);
+    } catch (error) {
+        console.error('Ошибка удаления роли:', error);
+        throw error;
+    }
+};

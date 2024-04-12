@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export interface BookRequest {
     title: string;
     author: string;
@@ -8,33 +10,58 @@ export interface BookRequest {
 }
 
 export const getAllBooks = async () => {
-    const response = await fetch("http://localhost:5282/api/BookCRUD");
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
 
-    return response.json();
+    try {
+        const response = await axios.get("http://localhost:5282/api/BookCRUD");
+        return response.data;
+    } catch (error) {
+        console.error('Ошибка получения списка книг:', error);
+        throw error;
+    }
 };
 
 export const createBook = async (bookRequest: BookRequest) => {
-    await fetch("http://localhost:5282/api/BookCRUD", {
-        method: "POST",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(bookRequest),
-    });
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.post("http://localhost:5282/api/BookCRUD", bookRequest);
+    } catch (error) {
+        console.error('Ошибка создания книги:', error);
+        throw error;
+    }
 };
 
 export const updateBook = async (id: string, bookRequest: BookRequest) => {
-    await fetch(`http://localhost:5282/api/BookCRUD/${id}`, {
-        method: "PUT",
-        headers: {
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(bookRequest),
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.put(`http://localhost:5282/api/BookCRUD/${id}`, bookRequest);
+    } catch (error) {
+        console.error('Ошибка обновления книги:', error);
+        throw error;
+    }
+};
 
 export const deleteBook = async (id: string) => {
-    await fetch(`http://localhost:5282/api/BookCRUD/${id}`, {
-        method: "DELETE",
-    });
-}
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
+    try {
+        await axios.delete(`http://localhost:5282/api/BookCRUD/${id}`);
+    } catch (error) {
+        console.error('Ошибка удаления книги:', error);
+        throw error;
+    }
+};

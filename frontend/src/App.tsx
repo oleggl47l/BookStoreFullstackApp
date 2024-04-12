@@ -16,30 +16,29 @@ import RolesPage from "./Pages/RolesPage.tsx";
 import OrdersPage from "./Pages/OrdersPage.tsx";
 import OrderItemsPage from "./Pages/OrderItemsPage.tsx";
 
+import Registration from "./Components/Registration/Registration.tsx";
+import Login from "./Components/Login/Login.tsx";
+import {Home} from "./Components/Home/Home.tsx";
+
 function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <div>
+            <div>
+                <BrowserRouter>
                     <NavBar/>
                     <Routes>
+                        <Route path={"/"} element={<Home/>}></Route>
                         <Route path={"/booksPage"} element={<BooksPage/>}></Route>
                         <Route path={"/usersPage"} element={<UsersPage/>}></Route>
                         <Route path={"/rolesPage"} element={<RolesPage/>}></Route>
                         <Route path={"/ordersPage"} element={<OrdersPage/>}></Route>
                         <Route path={"/orderItemsPage"} element={<OrderItemsPage/>}></Route>
+                        <Route path={"/registration"} element={<Registration/>}></Route>
+                        <Route path={"/login"} element={<Login/>}></Route>
                     </Routes>
-                </div>
-            </BrowserRouter>
-            {/*<BooksPage/>*/}
-            {/*<Router>*/}
-            {/*    <div className="App">*/}
-            {/*        <RegistrationForm />*/}
-            {/*        <LoginForm/>*/}
-            {/*    </div>*/}
-            {/*</Router>*/}
-            {/*/!*<UserList/>*!/*/}
+                </BrowserRouter>
+            </div>
         </>
     )
 }
