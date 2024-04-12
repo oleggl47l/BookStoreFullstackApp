@@ -1,5 +1,4 @@
 export interface UserRequest {
-    userId: string;
     firstName: string;
     lastName: string;
     email: string;
@@ -12,15 +11,15 @@ export const getAllUsers = async () => {
     return response.json();
 };
 
-// export const createUser = async (userRequest: UserRequest) => {
-//     await fetch("http://localhost:5282/api/UserCRUD", {
-//         method: "POST",
-//         headers: {
-//             "content-type": "application/json"
-//         },
-//         body: JSON.stringify(userRequest),
-//     });
-// };
+export const createUser = async (userRequest: UserRequest) => {
+    await fetch("http://localhost:5282/api/UserCRUD", {
+        method: "POST",
+        headers: {
+            "content-type": "application/json"
+        },
+        body: JSON.stringify(userRequest),
+    });
+};
 
 export const updateUser = async (id: string, userRequest: UserRequest) => {
     await fetch(`http://localhost:5282/api/UserCRUD/${id}`, {
