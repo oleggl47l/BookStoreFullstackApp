@@ -37,12 +37,25 @@ public class OrderItemCRUDController : ControllerBase {
 
     [HttpPut("{id}")]
     public async Task<ActionResult<OrderItem>> UpdateOrderItem(Guid id, [FromBody] OrderItem orderItem) {
-        if (id != orderItem.OrderItemId) {
-            return BadRequest("Wrong ID");
+        // if (id != orderItem.OrderItemId) {
+        //     return BadRequest("Wrong ID");
+        // }
+        //
+        // var updatedOrderItem = await _icrudService.Update(orderItem);
+        // return Ok(updatedOrderItem);
+
+        var existingOrderItem = await _icrudService.GetById(id);
+        if (existingOrderItem == null) {
+            return BadRequest("User not found");
         }
 
-        var updatedOrderItem = await _icrudService.Update(orderItem);
-        return Ok(updatedOrderItem);
+        existingOrderItem.OrderId = orderItem.OrderId;
+        existingOrderItem.BookId = orderItem.BookId;
+        existingOrderItem.Quantity = orderItem.Quantity;
+        existingOrderItem.Price = orderItem.Price;
+
+        var result = await _icrudService.Update(existingOrderItem);
+        return result;
     }
 
     [HttpDelete("{id}")]

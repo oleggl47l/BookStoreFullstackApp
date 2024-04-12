@@ -37,12 +37,28 @@ public class BookCRUDController : ControllerBase {
 
     [HttpPut("{id}")]
     public async Task<ActionResult<Book>> UpdateBook(Guid id, [FromBody] Book book) {
-        if (id != book.BookId) {
-            return BadRequest("Wrong ID");
+        // if (id != book.BookId) {
+        //     return BadRequest("Wrong ID");
+        // }
+        //
+        // var updatedBook = await _icrudService.Update(book);
+        // return Ok(updatedBook);
+        
+        var existingBook = await _icrudService.GetById(id);
+        if (existingBook == null) {
+            return BadRequest("Book not found");
         }
 
-        var updatedBook = await _icrudService.Update(book);
-        return Ok(updatedBook);
+        // Обновляем только поля, которые были отправлены в запросе
+        existingBook.Title = book.Title;
+        existingBook.Author = book.Author;
+        existingBook.Description = book.Description;
+        existingBook.Price = book.Price;
+        existingBook.Quantity = book.Quantity;
+        existingBook.Image = book.Image;
+
+        var result = await _icrudService.Update(existingBook);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]

@@ -36,12 +36,22 @@ public class RoleCRUDController(ICRUDService<Role> icrudService) : ControllerBas
 
     [HttpPut("{id}")]
     public async Task<ActionResult<Role>> UpdateRole(Guid id, [FromBody] Role role) {
-        if (id != role.RoleId) {
-            return BadRequest("Wrong ID");
+        // if (id != role.RoleId) {
+        //     return BadRequest("Wrong ID");
+        // }
+        //
+        // var updatedRole = await icrudService.Update(role);
+        // return Ok(updatedRole);
+
+        var existingRole = await icrudService.GetById(id);
+        if (existingRole == null) {
+            return BadRequest("Role not found");
         }
 
-        var updatedRole = await icrudService.Update(role);
-        return Ok(updatedRole);
+        existingRole.Name = role.Name;
+
+        var result = await icrudService.Update(existingRole);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]

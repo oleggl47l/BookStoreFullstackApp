@@ -128,3 +128,5 @@ D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\programming\BookStoreFullstack\backend\Bookstore\Bookstore.API\bin\Debug\net8.0\Newtonsoft.Json.dll

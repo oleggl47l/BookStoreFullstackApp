@@ -198,9 +198,25 @@ public class OrderService {
         return await GetOrCreateCartAsync(userId);
     }
 
+    // private async Task<Order> GetOrCreateCartAsync(Guid userId) {
+    //     var existingOrder = await _orderRepository.GetAll();
+    //     if (existingOrder == null || existingOrder.Count == 0) {
+    //         var newOrder = new Order {
+    //             OrderId = Guid.NewGuid(),
+    //             UserId = userId,
+    //             OrderDate = DateTime.UtcNow,
+    //             TotalAmount = 0,
+    //             OrderItems = new List<OrderItem>()
+    //         };
+    //         return await _orderRepository.Create(newOrder);
+    //     }
+    //
+    //     return existingOrder.First();
+    // }
+    
     private async Task<Order> GetOrCreateCartAsync(Guid userId) {
-        var existingOrder = await _orderRepository.GetAll();
-        if (existingOrder == null || existingOrder.Count == 0) {
+        var existingOrder = await _orderRepository.GetById(userId);
+        if (existingOrder == null) {
             var newOrder = new Order {
                 OrderId = Guid.NewGuid(),
                 UserId = userId,
@@ -211,6 +227,7 @@ public class OrderService {
             return await _orderRepository.Create(newOrder);
         }
 
-        return existingOrder.First();
+        return existingOrder;
     }
+
 }

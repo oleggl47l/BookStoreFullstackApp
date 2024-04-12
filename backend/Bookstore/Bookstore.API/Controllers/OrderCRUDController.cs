@@ -37,12 +37,24 @@ public class OrderCRUDController : ControllerBase {
 
     [HttpPut("{id}")]
     public async Task<ActionResult<Order>> UpdateOrder(Guid id, [FromBody] Order order) {
-        if (id != order.OrderId) {
-            return BadRequest("Wrong ID");
+        // if (id != order.OrderId) {
+        //     return BadRequest("Wrong ID");
+        // }
+        //
+        // var updatedOrder = await _icrudService.Update(order);
+        // return Ok(updatedOrder);
+
+        var existingOrder = await _icrudService.GetById(id);
+        if (existingOrder == null) {
+            return BadRequest("User not found");
         }
 
-        var updatedOrder = await _icrudService.Update(order);
-        return Ok(updatedOrder);
+        existingOrder.OrderDate = order.OrderDate;
+        existingOrder.TotalAmount = order.TotalAmount;
+        existingOrder.UserId = order.UserId;
+
+        var result = await _icrudService.Update(order);
+        return result;
     }
 
     [HttpDelete("{id}")]

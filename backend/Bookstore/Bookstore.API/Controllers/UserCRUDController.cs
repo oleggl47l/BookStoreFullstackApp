@@ -34,12 +34,25 @@ public class UserCRUDController(ICRUDService<User> icrudService) : ControllerBas
 
     [HttpPut("{id}")]
     public async Task<ActionResult<User>> UpdateUser(Guid id, [FromBody] User user) {
-        if (id != user.UserId) {
-            return BadRequest("Wrong ID");
+        // if (id != user.UserId) {
+        //     return BadRequest("Wrong ID");
+        // }
+
+        // var updatedUser = await icrudService.Update(user);
+        // return Ok(updatedUser);
+
+        var existingUser = await icrudService.GetById(id);
+        if (existingUser == null) {
+            return BadRequest("User not found");
         }
 
-        var updatedUser = await icrudService.Update(user);
-        return Ok(updatedUser);
+        existingUser.FirstName = user.FirstName;
+        existingUser.LastName = user.LastName;
+        existingUser.Email = user.Email;
+        existingUser.RoleId = user.RoleId;
+
+        var result = await icrudService.Update(existingUser);
+        return Ok(result);
     }
 
     [HttpDelete("{id}")]
