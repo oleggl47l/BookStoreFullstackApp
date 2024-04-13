@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Button, Card, Container, Form} from "react-bootstrap";
+import {extractRoleFromToken} from "../../Services/extractRoleFromToken.ts";
 
 const Login: React.FC = () => {
     const [formData, setFormData] = useState({
@@ -22,6 +23,8 @@ const Login: React.FC = () => {
             const response = await axios.post('http://localhost:5282/api/auth/login', formData);
             const token = response.data.token;
             localStorage.setItem('token', token);
+            const role = extractRoleFromToken(token);
+            console.log('Полученная роль:', role); // Выводим роль в консоль
             // Переход на другую страницу после успешной авторизации
             window.location.href = "/"
         } catch (error) {
