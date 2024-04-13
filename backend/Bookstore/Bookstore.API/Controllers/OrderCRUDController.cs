@@ -7,7 +7,7 @@ namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Policy = "Admin")]
+[Authorize]
 
 public class OrderCRUDController : ControllerBase {
     private readonly ICRUDService<Order> _icrudService;
@@ -32,12 +32,14 @@ public class OrderCRUDController : ControllerBase {
         return Ok(order);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Order>> CreateOrder([FromBody] Order order) {
         var createdOrder = await _icrudService.Create(order);
         return CreatedAtAction(nameof(GetOrderById), new { id = createdOrder.OrderId }, createdOrder);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpPut("{id}")]
     public async Task<ActionResult<Order>> UpdateOrder(Guid id, [FromBody] Order order) {
         // if (id != order.OrderId) {
@@ -59,7 +61,8 @@ public class OrderCRUDController : ControllerBase {
         var result = await _icrudService.Update(order);
         return result;
     }
-
+    
+    [Authorize(Policy = "Admin")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteOrder(Guid id) {
         return Ok(await _icrudService.Delete(id));

@@ -1,5 +1,5 @@
-import { UpdateUser, Mode } from "../Components/UserCard/UpdateUser.tsx";
-import { AdminUserCard } from "../Components/UserCard/UserCard.tsx";
+import { UpdateUser, Mode } from "../Components/UserCardAdmin/UpdateUser.tsx";
+import { AdminUserCard } from "../Components/UserCardAdmin/UserCardAdmin.tsx";
 import { useEffect, useState } from "react";
 import { UserRequest, deleteUser, getAllUsers, updateUser } from "../Services/forAdmin/users.tsx";
 

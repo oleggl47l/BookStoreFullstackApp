@@ -15,11 +15,11 @@ public class OrderController : ControllerBase {
         _orderService = orderService;
     }
 
-    [HttpGet("{userId}")]
-    public async Task<IActionResult> GetCart(Guid userId) {
-        var cart = await _orderService.GetCartAsync(userId);
-        return Ok(cart);
-    }
+    // [HttpGet("{userId}")]
+    // public async Task<IActionResult> GetCart(Guid userId) {
+    //     var cart = await _orderService.GetCartAsync(userId);
+    //     return Ok(cart);
+    // }
 
     [HttpPost("{userId}/addItem")]
     public async Task<IActionResult> AddToCart(Guid userId, [FromBody] CartItemRequest request) {

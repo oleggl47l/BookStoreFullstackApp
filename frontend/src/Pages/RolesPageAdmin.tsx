@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
-import CreateUpdateRole, { Mode } from '../Components/RoleCard/CreateUpdateRole';
-import AdminRoleCard from '../Components/RoleCard/RoleCard';
+import CreateUpdateRole, { Mode } from '../Components/RoleCardAdmin/CreateUpdateRole';
+import AdminRoleCard from '../Components/RoleCardAdmin/RoleCardAdmin.tsx';
 import {  RoleRequest, createRole, deleteRole, getAllRoles, updateRole } from '../Services/forAdmin/roles';
 import {useEffect, useState} from "react";
 

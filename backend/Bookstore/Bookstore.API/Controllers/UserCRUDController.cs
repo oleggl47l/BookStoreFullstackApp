@@ -7,11 +7,12 @@ namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Policy = "Admin")]
+[Authorize]
 
 // [Authorize(Policy = "Admin")]
 
 public class UserCRUDController(ICRUDService<User> icrudService) : ControllerBase {
+    
     [HttpGet]
     public async Task<ActionResult<List<User>>> GetAllUsers() {
         var User = await icrudService.GetAll();
@@ -51,12 +52,13 @@ public class UserCRUDController(ICRUDService<User> icrudService) : ControllerBas
         existingUser.FirstName = user.FirstName;
         existingUser.LastName = user.LastName;
         existingUser.Email = user.Email;
-        existingUser.RoleId = user.RoleId;
+        // existingUser.RoleId = user.RoleId;
 
         var result = await icrudService.Update(existingUser);
         return Ok(result);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteUser(Guid id) {
         return Ok(await icrudService.Delete(id));

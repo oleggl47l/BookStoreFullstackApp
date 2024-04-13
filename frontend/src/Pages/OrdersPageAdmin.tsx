@@ -1,7 +1,7 @@
-import {UpdateOrder, Mode} from '../Components/OrderCard/UpdateOrder.tsx';
+import {UpdateOrder, Mode} from '../Components/OrderCardAdmin/UpdateOrder.tsx';
 import {useEffect, useState} from 'react';
 import {OrderRequest, deleteOrder, getAllOrders, updateOrder} from '../Services/forAdmin/orders.tsx';
-import {AdminOrderCard} from "../Components/OrderCard/OrderCard.tsx";
+import {AdminOrderCard} from "../Components/OrderCardAdmin/OrderCardAdmin.tsx";
 
 export default function OrdersPage() {
     const defaultValues = {

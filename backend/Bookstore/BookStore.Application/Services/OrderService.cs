@@ -20,20 +20,20 @@ public class OrderService {
 
     public async Task<OrderItem> AddToCartAsync(Guid userId, Guid bookId, int quantity) {
         var order = await GetOrCreateCartAsync(userId);
-    
+
         var book = await _bookRepository.GetById(bookId);
         if (book == null) {
             throw new Exception("Книга не найдена.");
         }
-    
+
         if (book.Quantity < quantity) {
             throw new Exception("На складе недостаточно экземпляров данной книги.");
         }
-    
+
         if (quantity < 0) {
             throw new Exception("Количество не может быть отрицательным");
         }
-    
+
         var orderItem = order.OrderItems.FirstOrDefault(oi => oi.BookId == bookId);
         if (orderItem != null) {
             orderItem.Quantity += quantity;
@@ -48,19 +48,19 @@ public class OrderService {
             };
             order.OrderItems.Add(orderItem);
         }
-    
+
         order.OrderDate = DateTime.UtcNow;
         order.TotalAmount += book.Price * quantity;
         book.Quantity -= quantity;
-        
+
         await _bookRepository.Update(book);
         await _orderItemRepository.Create(orderItem);
         await _orderRepository.Update(order);
-    
+
         return orderItem;
     }
-    
-    
+
+
     // public async Task<OrderItem> AddToCartAsync(Guid userId, Guid bookId, int quantity)
     // {
     //     var order = await GetOrCreateCartAsync(userId);
@@ -176,13 +176,13 @@ public class OrderService {
         if (newQuantity < 0) {
             throw new Exception("количество не может быть меньше нуля");
         }
-        
+
         orderItem.Quantity = newQuantity;
         orderItem.Price = book.Price * newQuantity;
 
         order.TotalAmount -= orderItem.Price;
         order.TotalAmount += book.Price * newQuantity;
-        
+
         order.TotalAmount = order.OrderItems.Sum(oi => oi.Price);
 
         book.Quantity -= newQuantity;
@@ -194,9 +194,9 @@ public class OrderService {
         return orderItem;
     }
 
-    public async Task<Order> GetCartAsync(Guid userId) {
-        return await GetOrCreateCartAsync(userId);
-    }
+    // public async Task<Order> GetCartAsync(Guid userId) {
+    //     return await GetOrCreateCartAsync(userId);
+    // }
 
     // private async Task<Order> GetOrCreateCartAsync(Guid userId) {
     //     var existingOrder = await _orderRepository.GetAll();
@@ -213,7 +213,7 @@ public class OrderService {
     //
     //     return existingOrder.First();
     // }
-    
+
     private async Task<Order> GetOrCreateCartAsync(Guid userId) {
         var existingOrder = await _orderRepository.GetById(userId);
         if (existingOrder == null) {
@@ -229,5 +229,4 @@ public class OrderService {
 
         return existingOrder;
     }
-
 }

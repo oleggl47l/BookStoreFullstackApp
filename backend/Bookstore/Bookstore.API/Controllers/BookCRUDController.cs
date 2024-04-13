@@ -7,7 +7,7 @@ namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Policy = "Admin")]
+[Authorize]
 
 public class BookCRUDController : ControllerBase {
     private readonly ICRUDService<Book> _icrudService;
@@ -16,6 +16,7 @@ public class BookCRUDController : ControllerBase {
         _icrudService = icrudService;
     }
 
+    [AllowAnonymous]
     [HttpGet]
     public async Task<ActionResult<List<Book>>> GetAllBooks() {
         var books = await _icrudService.GetAll();
@@ -32,12 +33,14 @@ public class BookCRUDController : ControllerBase {
         return Ok(book);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpPost]
     public async Task<ActionResult<Book>> CreateBook([FromBody] Book book) {
         var createdBook = await _icrudService.Create(book);
         return CreatedAtAction(nameof(GetBookById), new { id = createdBook.BookId }, createdBook);
     }
 
+    [Authorize(Policy = "Admin")]
     [HttpPut("{id}")]
     public async Task<ActionResult<Book>> UpdateBook(Guid id, [FromBody] Book book) {
         // if (id != book.BookId) {

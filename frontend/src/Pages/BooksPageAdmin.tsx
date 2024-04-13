@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
-import {CreateUpdateBook, Mode} from "../Components/BookCard/CreateUpdateBook.tsx";
-import {AdminBookCard} from "../Components/BookCard/BookCard.tsx";
+import {CreateUpdateBook, Mode} from "../Components/BookCardAdmin/CreateUpdateBook.tsx";
+import {AdminBookCard} from "../Components/BookCardAdmin/BookCardAdmin.tsx";
 import {useEffect, useState} from "react";
 import {BookRequest, createBook, deleteBook, getAllBooks, updateBook} from "../Services/forAdmin/books.tsx";
 
