@@ -4,7 +4,7 @@ import AdminRoleCard from '../Components/RoleCardAdmin/RoleCardAdmin.tsx';
 import {  RoleRequest, createRole, deleteRole, getAllRoles, updateRole } from '../Services/forAdmin/roles';
 import {useEffect, useState} from "react";
 
-export default function RolesPage() {
+export default function RolesPageAdmin() {
     const defaultValues = {
         name: 'Default',
     } as Roles;
@@ -66,8 +66,8 @@ export default function RolesPage() {
     };
 
     return (
-        <div style={{ margin: '10px' }}>
-            <Button variant="primary" style={{ marginBlock: '10px' }} size="lg" onClick={openModal}>
+        <div style={{margin: '10px', textAlign: 'center'}}>
+            <Button variant="primary" style={{marginBlock: '10px'}} size="lg" onClick={openModal}>
                 Add role
             </Button>
 
@@ -83,10 +83,10 @@ export default function RolesPage() {
             {loading ? (
                 <h1>Loading . . .</h1>
             ) : (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
+                <div style={{display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center'}}>
                     {roles.map((role: Roles) => (
                         <div key={role.roleId}>
-                            <AdminRoleCard role={role} handleDelete={handleDeleteRole} handleOpen={openEditModal} />
+                            <AdminRoleCard role={role} handleDelete={handleDeleteRole} handleOpen={openEditModal}/>
                         </div>
                     ))}
                 </div>

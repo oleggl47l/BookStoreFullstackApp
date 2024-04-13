@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import {BookRequest, createBook, deleteBook, getAllBooks, updateBook} from "../Services/forAdmin/books.tsx";
 
 
-export default function BooksPage() {
+export default function BooksPageAdmin() {
     const defaultValues = {
         title: "Default",
         author: "",
@@ -69,7 +69,7 @@ export default function BooksPage() {
     };
 
     return (
-        <div style={{margin: '10px'}}>
+        <div style={{ margin: '10px', textAlign: 'center' }}>
             <Button
                 variant="primary"
                 style={{marginBlock: "10px"}}

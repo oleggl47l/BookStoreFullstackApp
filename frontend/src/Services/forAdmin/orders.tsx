@@ -62,3 +62,17 @@ export const deleteOrder = async (id: string) => {
         throw error;
     }
 };
+
+export const getOrderById = async (orderId: string) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+    try {
+        const response = await axios.get(`http://localhost:5282/api/OrderCRUD/${orderId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting user by ID:', error);
+        throw error;
+    }
+};

@@ -16,35 +16,21 @@ export enum Mode {
     Edit,
 }
 
-export const UpdateUserAdmin = ({mode, values, isModalOpen, handleCancel,  handleUpdate}: Props) => {
-    // const [firstName, setFirstName] = useState("");
-    // const [lastName, setLastName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [roleId, setRoleId] = useState("");
-
+export const UpdateUser = ({mode, values, isModalOpen, handleCancel,  handleUpdate}: Props) => {
 
     const [firstName, setFirstName] = useState(values.firstName || ''); // Значение по умолчанию пустая строка
     const [lastName, setLastName] = useState(values.lastName || ''); // Значение по умолчанию пустая строка
     const [email, setEmail] = useState(values.email || ''); // Значение по умолчанию пустая строка
-    const [roleId, setRoleId] = useState(values.roleId || ''); // Значение по умолчанию пустая строка
 
     useEffect(() => {
         setFirstName(values.firstName || '');
         setLastName(values.lastName || '');
         setEmail(values.email || '');
-        setRoleId(values.roleId || '');
     }, [values]);
 
-    /*useEffect(() => {
-        setFirstName(values.firstName);
-        setLastName(values.lastName);
-        setEmail(values.email);
-        setRoleId(values.roleId);
-
-    }, [values]);*/
 
     const handleOnOk = async () => {
-        const userRequest = {userId: values.userId, firstName, lastName, email, roleId};
+        const userRequest = {userId: values.userId, firstName, lastName, email};
         handleUpdate(values.userId, userRequest);
     };
 
@@ -66,10 +52,6 @@ export const UpdateUserAdmin = ({mode, values, isModalOpen, handleCancel,  handl
                     <Form.Group controlId="email">
                         <Form.Label>Email</Form.Label>
                         <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                    </Form.Group>
-                    <Form.Group controlId="roleId">
-                        <Form.Label>Role ID</Form.Label>
-                        <Form.Control type="text" value={roleId} onChange={(e) => setRoleId(e.target.value)}/>
                     </Form.Group>
                 </Form>
             </Modal.Body>

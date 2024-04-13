@@ -73,10 +73,10 @@ export const CreateUpdateBook = ({mode, values, isModalOpen, handleCancel, handl
                         <Form.Control type="number" value={quantity} onChange={(e) => setQuantity(parseFloat(e.target.value))}/>
                     </Form.Group>
 
-                    <Form.Group controlId="image">
-                        <Form.Label>Image</Form.Label>
-                        <Form.Control type="text" value={image} onChange={(e) => setImage(e.target.value)}/>
-                    </Form.Group>
+                    {/*<Form.Group controlId="image">*/}
+                    {/*    <Form.Label>Image</Form.Label>*/}
+                    {/*    <Form.Control type="text" value={image} onChange={(e) => setImage(e.target.value)}/>*/}
+                    {/*</Form.Group>*/}
                 </Form>
             </Modal.Body>
             <Modal.Footer>

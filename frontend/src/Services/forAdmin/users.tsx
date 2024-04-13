@@ -4,7 +4,7 @@ export interface UserRequest {
     firstName: string;
     lastName: string;
     email: string;
-    roleId: string;
+    roleId?: string;
 }
 
 export const getAllUsers = async () => {
@@ -60,6 +60,20 @@ export const deleteUser = async (id: string) => {
         await axios.delete(`http://localhost:5282/api/UserCRUD/${id}`);
     } catch (error) {
         console.error('Ошибка удаления пользователя:', error);
+        throw error;
+    }
+};
+
+export const getUserById = async (userId: string) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+    try {
+        const response = await axios.get(`http://localhost:5282/api/UserCRUD/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error getting user by ID:', error);
         throw error;
     }
 };

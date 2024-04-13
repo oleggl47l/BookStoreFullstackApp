@@ -36,7 +36,7 @@ const Registration: React.FC = () => {
 
     return (
         <Container className="container">
-            <Card>
+            <Card style={{ maxWidth: '400px', margin: 'auto', marginTop: '50px', padding: '20px' }}>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicFirstName">
                         <Form.Label>First name</Form.Label>
@@ -54,7 +54,7 @@ const Registration: React.FC = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} required />
                     </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit" className="w-100">
                         Submit
                     </Button>
                 </Form>

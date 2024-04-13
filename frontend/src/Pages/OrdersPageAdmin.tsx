@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {OrderRequest, deleteOrder, getAllOrders, updateOrder} from '../Services/forAdmin/orders.tsx';
 import {AdminOrderCard} from "../Components/OrderCardAdmin/OrderCardAdmin.tsx";
 
-export default function OrdersPage() {
+export default function OrdersPageAdmin() {
     const defaultValues = {
         orderDate: new Date(),
         totalAmount: 0,

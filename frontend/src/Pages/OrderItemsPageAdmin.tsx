@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { OrderItemRequest, deleteOrderItem, getAllOrderItems, updateOrderItem } from '../Services/forAdmin/orderItems.tsx';
 import {AdminOrderItemCard} from "../Components/OrderItemCardAdmin/OrderItemCardAdmin.tsx";
 
-export default function OrderItemsPage() {
+export default function OrderItemsPageAdmin() {
     const defaultValues = {
         orderId: '',
         bookId: '',

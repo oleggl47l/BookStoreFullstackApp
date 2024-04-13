@@ -3,5 +3,5 @@ interface User {
     firstName: string;
     lastName: string;
     email: string;
-    roleId: string;
+    roleId?: string;
 }

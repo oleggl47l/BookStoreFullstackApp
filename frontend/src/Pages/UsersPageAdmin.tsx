@@ -1,9 +1,9 @@
-import { UpdateUser, Mode } from "../Components/UserCardAdmin/UpdateUser.tsx";
+import { UpdateUserAdmin, Mode } from "../Components/UserCardAdmin/UpdateUserAdmin.tsx";
 import { AdminUserCard } from "../Components/UserCardAdmin/UserCardAdmin.tsx";
 import { useEffect, useState } from "react";
 import { UserRequest, deleteUser, getAllUsers, updateUser } from "../Services/forAdmin/users.tsx";
 
-export default function UsersPage() {
+export default function UsersPageAdmin() {
     const defaultValues = {
         firstName: "",
         lastName: "",
@@ -58,7 +58,7 @@ export default function UsersPage() {
     return (
         <div style={{ margin: '10px' }}>
 
-            <UpdateUser
+            <UpdateUserAdmin
                 mode={mode}
                 values={values}
                 isModalOpen={isModalOpen}
