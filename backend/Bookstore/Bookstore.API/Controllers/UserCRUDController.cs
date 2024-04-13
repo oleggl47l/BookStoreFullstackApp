@@ -7,6 +7,8 @@ namespace Bookstore.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = "Admin")]
+
 // [Authorize(Policy = "Admin")]
 
 public class UserCRUDController(ICRUDService<User> icrudService) : ControllerBase {

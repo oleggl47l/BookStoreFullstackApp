@@ -93,17 +93,17 @@ if (app.Environment.IsDevelopment()) {
 }
 
 app.UseHttpsRedirection();
+app.UseCors(x => {
+    x.WithHeaders().AllowAnyHeader();
+    x.WithOrigins("http://localhost:5173");
+    x.WithMethods().AllowAnyMethod();
+});
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseCors(x => {
-    x.WithHeaders().AllowAnyHeader();
-    x.WithOrigins("http://localhost:5173");
-    x.WithMethods().AllowAnyMethod();
-});
 
 
 app.Run();
